@@ -46,7 +46,7 @@
 package ahmaabdo.readify.rss.activity;
 
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 
 import ahmaabdo.readify.rss.R;

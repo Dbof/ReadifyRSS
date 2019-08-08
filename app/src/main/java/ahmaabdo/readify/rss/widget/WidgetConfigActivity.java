@@ -46,7 +46,7 @@ package ahmaabdo.readify.rss.widget;
 
 import android.appwidget.AppWidgetManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import ahmaabdo.readify.rss.R;
 import ahmaabdo.readify.rss.utils.PrefUtils;

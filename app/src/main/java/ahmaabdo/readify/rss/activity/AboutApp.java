@@ -3,7 +3,7 @@ package ahmaabdo.readify.rss.activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.webkit.WebView;
 

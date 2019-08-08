@@ -2,11 +2,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.droidtitan.lintcleaner'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 29
     defaultConfig {
         applicationId "ahmaabdo.readify.rss"
         minSdkVersion 16
-        targetSdkVersion 27
+        targetSdkVersion 29
         versionCode 9
         versionName "1.5.4"
         vectorDrawables.useSupportLibrary = true
@@ -31,10 +31,10 @@ version = "27.1.0"
 
 dependencies {
     //Android Support libraries
-    implementation "com.android.support:appcompat-v7:$version"
-    implementation "com.android.support:support-v4:$version"
-    implementation "com.android.support:design:$version"
-    implementation "com.android.support:support-vector-drawable:$version"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.vectordrawable:vectordrawable:1.0.1'
 
     implementation "com.github.daniel-stoneuk:material-about-library:2.2.4"
     implementation 'org.jsoup:jsoup:1.10.3'
@@ -45,4 +45,9 @@ dependencies {
     implementation 'com.daimajia.androidanimations:library:2.3@aar'
     implementation 'com.r0adkll:slidableactivity:2.0.6'
     implementation 'com.ryanjeffreybrooks:indefinitepagerindicator:1.0.3'
+
+    def work_version = "2.1.0"
+
+    // (Java only)
+    implementation "androidx.work:work-runtime:$work_version"
 }

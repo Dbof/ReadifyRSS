@@ -46,6 +46,9 @@
 package ahmaabdo.readify.rss.service;
 
 import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.BroadcastReceiver;
@@ -56,6 +59,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Build;
 import android.os.IBinder;
 import android.os.SystemClock;
+import androidx.core.app.NotificationCompat;
 import android.util.Log;
 
 import ahmaabdo.readify.rss.Constants;

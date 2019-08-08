@@ -46,17 +46,23 @@
 package ahmaabdo.readify.rss.service;
 
 import android.app.IntentService;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Handler;
 import android.os.SystemClock;
+import androidx.core.app.NotificationCompat;
 import android.text.Html;
 import android.text.TextUtils;
 import android.util.Xml;
@@ -127,6 +133,28 @@ public class FetcherService extends IntentService {
         HttpURLConnection.setFollowRedirects(true);
         mHandler = new Handler();
     }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            String CHANNEL_ID = FetcherService.class.getSimpleName();
+            String CHANNEL_NAME = "Readify Fetcher";
+
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
+                    CHANNEL_NAME,NotificationManager.IMPORTANCE_NONE);
+            ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(channel);
+
+            Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
+                    .setSmallIcon(R.drawable.ticker_widget_preview)
+                    .setContentText("Fetching articles...")
+                    .setCategory(Notification.CATEGORY_SERVICE).setPriority(NotificationCompat.PRIORITY_MIN).build();
+
+            startForeground(101, notification);
+        }
+    }
+
+
 
     public static boolean hasMobilizationTask(long entryId) {
         Cursor cursor = MainApplication.getContext().getContentResolver().query(TaskColumns.CONTENT_URI, TaskColumns.PROJECTION_ID,
